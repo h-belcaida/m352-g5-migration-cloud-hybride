@@ -1,0 +1,7 @@
+*.key
+*.pem
+*.docx
+*.pdf
+*.iso
+*.ova
+.env
