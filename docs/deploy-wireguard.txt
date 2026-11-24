@@ -1,0 +1,13 @@
+sudo apt install wireguard -y
+
+mkdir wireguard && cd wireguard
+
+wg genkey | tee client_private.key | wg pubkey > client_public.key
+
+[edit /etc/wireguard/wg0.conf]
+
+sudo apt install resolvconf
+
+sudo wg-quick up wg0
+
+ping 10.8.0.1 --- should work
