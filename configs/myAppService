@@ -1,0 +1,13 @@
+[Unit]
+Description=Simple Python web app
+After=network.target
+
+[Service]
+User=www-data
+WorkingDirectory=/opt/myapp
+ExecStart=/usr/bin/python3 /opt/myapp/app.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
