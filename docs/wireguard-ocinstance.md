@@ -19,7 +19,17 @@ sudo sysctl -p
 
 ## 4. Configuration de l'interface `/etc/wireguard/wg0.conf`
 ```ini
-# Colle ici le contenu de ton fichier /etc/wireguard/wg0.conf (sans la clé privée !)
+[Interface]
+Address = xxxxxxx.xxxxxxxx.xxxxxxx.1/24
+ListenPort = x18xxxxxxxxx
+PrivateKey = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxlpe3qb1E=
+PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o wg0 -j MASQUERADE
+PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o wg0 -j MASQUERADE
+
+[Peer]
+# OPNsense-SITE
+PublicKey = En attente ....
+AllowedIPs = x.99.x.x/32, 192.xxxx.xx.x/24
 ```
 
 ## 5. Vérification
