@@ -8,18 +8,21 @@ Migration progressive d'un SI local vers Oracle Cloud, avec les données sensibl
 ![Architecture](docs/architecture.png)
 
 - Côté Oracle Cloud : un VCN avec un sous-réseau public (VM1) et un sous-réseau privé (VM2).
-- Côté site (VMware) : OPNsense protège la zone données où se trouve SRV-DATA.
-- Le tunnel WireGuard (VM1 10.99.0.1 <-> OPNsense 10.99.0.2, UDP 51820) est le seul lien entre le site et le cloud.
-- Seuls les ports 80 et 51820 sont ouverts sur Internet ; SSH est autorisé uniquement depuis l'IP de l'administrateur.
+- Côté site (VMware) : OPNsense protège la zone Utilisateurs (ADMIN-SITE) et la zone Données (SRV-DATA).
+- Le tunnel WireGuard (réseau `10.8.0.0/24`, serveur VM1 `10.8.0.1`, client OPNsense `10.8.0.2`, UDP 51820) est le seul lien entre le site et le cloud.
+- Ports ouverts sur Internet : 443 (HTTPS, le port 80 redirige vers 443) et 51820/udp. SSH uniquement depuis l'IP de l'administrateur.
 
-## Machines prévues
+Le schéma montre les plages prévues au départ. Les plages réellement utilisées sont celles du tableau ci-dessous.
 
-| Nom | Emplacement | Rôle |
-|-----|-------------|------|
-| VM1 edge | Oracle, sous-réseau public 10.0.1.0/24 | Nginx + serveur WireGuard, seule IP publique |
-| VM2 app-int | Oracle, sous-réseau privé 10.0.2.0/24 | Intranet, pas d'IP publique |
-| OPNsense | VMware | Pare-feu du site + client WireGuard |
-| SRV-DATA | VMware, 192.168.20.10 | PostgreSQL, disque chiffré LUKS |
+## Machines
+
+| Nom | Emplacement | Adressage | Rôle | État |
+|-----|-------------|-----------|------|------|
+| VM1 edge (`ocinstance`) | Oracle, sous-réseau public | `10.0.0.0/24` | Nginx + serveur WireGuard, seule IP publique | En service |
+| VM2 app-int | Oracle, sous-réseau privé | `10.0.1.0/24` | Intranet, pas d'IP publique | Bloquée (capacité Ampere A1) |
+| OPNsense | VMware | LAN `192.168.10.1`, Données `192.168.20.1` | Pare-feu du site + client WireGuard | En service |
+| ADMIN-SITE | VMware, zone Utilisateurs | `192.168.10.10` | Poste d'administration (Xubuntu) | En service |
+| SRV-DATA | VMware, zone Données | `192.168.20.10` | PostgreSQL, disque chiffré LUKS | À installer |
 
 ## Plan de migration
 
@@ -29,11 +32,26 @@ Migration progressive d'un SI local vers Oracle Cloud, avec les données sensibl
 
 Solution de secours : si Oracle Cloud est indisponible, VM1 et VM2 sont recréées dans VMware.
 
-## Avancement de la virtualisation et des systèmes
+## Avancement
 
-Au 24 novembre, VM1 OCI est en service et le site VMware permet d’atteindre la page de connexion OPNsense depuis ADMIN-SITE. La création de VM2 OCI est bloquée par la capacité Ampere A1. SRV-DATA et le secours VMware restent à préparer.
+Point au 24 novembre 2026. Détails dans [docs/avancement.md](docs/avancement.md), captures dans [preuves/](preuves/README.md).
 
-[Travaux de Mohammed ELFADLAOUI et écarts d’adressage](docs/avancement-mohammed.md) · [Index des preuves](preuves/README.md#contribution-de-mohammed-elfadlaoui)
+| Partie | État |
+|--------|------|
+| Machines | VM1 OCI et site VMware (OPNsense, ADMIN-SITE) en service ; VM2 bloquée par la capacité OCI |
+| Réseau | Sous-réseaux OCI et réseaux VMware en place ; ADMIN-SITE atteint OPNsense |
+| WireGuard | Serveur et pairs configurés sur un environnement de test, à porter sur OCI |
+| Données | SRV-DATA à installer |
+| Services exposés | Nginx en HTTPS (certificat autosigné) devant une application web Python, sur l'environnement de test |
+
+## Contenu du dépôt
+
+| Dossier | Contenu |
+|---------|---------|
+| [configs/](configs/) | Configurations Nginx, WireGuard, service systemd et données fictives |
+| [docs/](docs/) | Schéma d'architecture, avancement, procédures WireGuard |
+| [preuves/](preuves/README.md) | Captures d'écran rangées par partie |
+| [tests/](tests/tests.md) | Tests à réaliser et résultats attendus |
 
 ## Technologies
 
@@ -52,4 +70,4 @@ Oracle Cloud, VMware, OPNsense, WireGuard, Nginx, PostgreSQL, LUKS.
 
 ## Sécurité du dépôt
 
-Dépôt public : aucune clé, aucune IP réelle, uniquement des valeurs fictives (`<PRIVATE_KEY>`, `<VM1_PUBLIC_IP>`, etc.).
+Dépôt public : aucune clé privée, aucune IP publique réelle, uniquement des valeurs fictives (`<PRIVATE_KEY>`, `<VM1_PUBLIC_IP>`, etc.).
