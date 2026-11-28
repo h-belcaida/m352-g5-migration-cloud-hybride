@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2050" height="1300" viewBox="0 0 2050 1300" font-family="Helvetica, Arial, 'Liberation Sans', 'DejaVu Sans', sans-serif">
+<rect width="2050" height="1300" fill="#FFFFFF"/>
+<text x="50" y="48" font-size="17" fill="#262626" text-anchor="start" font-style="italic">Flèche pleine : flux autorisé</text>
+<text x="50" y="71" font-size="17" fill="#262626" text-anchor="start" font-style="italic">Pointillés : accès aux données sensibles</text>
+<text x="50" y="94" font-size="17" fill="#262626" text-anchor="start" font-style="italic">Interdit : Internet vers web-app et vers le site</text>
+<rect x="50" y="205" width="740" height="767" rx="18" fill="#FDF1E3" stroke="#C55A11" stroke-width="4"/>
+<text x="420.0" y="252" font-size="26" fill="#C55A11" text-anchor="middle" font-weight="bold">SITE ON-PREMISE (simulé sous VMware)</text>
+<rect x="105" y="296" width="630" height="166" rx="14" fill="#FFFFFF" stroke="#C55A11" stroke-width="3"/>
+<text x="420.0" y="340" font-size="24" fill="#262626" text-anchor="middle" font-weight="bold">OPNsense</text>
+<text x="420.0" y="377" font-size="19" fill="#262626" text-anchor="middle">pare-feu entre zones + client WireGuard</text>
+<text x="420.0" y="405" font-size="19" fill="#262626" text-anchor="middle">aucun port ouvert depuis Internet</text>
+<text x="420.0" y="441" font-size="19" fill="#2E75B6" text-anchor="middle" font-weight="bold">wg 10.8.0.2</text>
+<rect x="80" y="510" width="328" height="410" rx="14" fill="#FBE5D6" stroke="#C00000" stroke-width="3" stroke-dasharray="12 8"/>
+<rect x="432" y="510" width="328" height="410" rx="14" fill="#F3F3F3" stroke="#8C8C8C" stroke-width="3" stroke-dasharray="12 8"/>
+<text x="244.0" y="552" font-size="22" fill="#C00000" text-anchor="middle" font-weight="bold">Zone Données</text>
+<text x="244.0" y="582" font-size="19" fill="#C00000" text-anchor="middle">192.168.20.0/24</text>
+<text x="596.0" y="552" font-size="22" fill="#595959" text-anchor="middle" font-weight="bold">Zone Utilisateurs</text>
+<text x="596.0" y="582" font-size="19" fill="#595959" text-anchor="middle">192.168.10.0/24</text>
+<rect x="108" y="615" width="272" height="277" rx="14" fill="#FFFFFF" stroke="#C00000" stroke-width="3"/>
+<text x="244.0" y="660" font-size="23" fill="#262626" text-anchor="middle" font-weight="bold">SRV-DATA</text>
+<text x="244.0" y="700" font-size="19" fill="#262626" text-anchor="middle">PostgreSQL +</text>
+<text x="244.0" y="727" font-size="19" fill="#262626" text-anchor="middle">fichiers RH</text>
+<text x="244.0" y="765" font-size="19" fill="#262626" text-anchor="middle">disque chiffré (LUKS)</text>
+<text x="244.0" y="803" font-size="19" fill="#C00000" text-anchor="middle" font-weight="bold">192.168.20.10</text>
+<text x="244.0" y="852" font-size="20" fill="#C00000" text-anchor="middle" font-weight="bold">reste sur site</text>
+<rect x="460" y="615" width="272" height="277" rx="14" fill="#FFFFFF" stroke="#8C8C8C" stroke-width="3"/>
+<text x="596.0" y="660" font-size="23" fill="#262626" text-anchor="middle" font-weight="bold">ADMIN-SITE</text>
+<text x="596.0" y="700" font-size="19" fill="#262626" text-anchor="middle">poste d'administration</text>
+<text x="596.0" y="727" font-size="19" fill="#262626" text-anchor="middle">(Xubuntu)</text>
+<text x="596.0" y="803" font-size="19" fill="#595959" text-anchor="middle" font-weight="bold">192.168.10.10</text>
+<polyline points="244.0,478.0 244.0,494.0" fill="none" stroke="#444444" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="244.0,508.0 237.0,494.0 251.0,494.0" fill="#444444"/>
+<polygon points="244.0,464.0 251.0,478.0 237.0,478.0" fill="#444444"/>
+<polyline points="596.0,478.0 596.0,494.0" fill="none" stroke="#444444" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="596.0,508.0 589.0,494.0 603.0,494.0" fill="#444444"/>
+<polygon points="596.0,464.0 603.0,478.0 589.0,478.0" fill="#444444"/>
+<rect x="915" y="205" width="1088" height="767" rx="18" fill="#EAF2FB" stroke="#2E75B6" stroke-width="4"/>
+<text x="1444" y="252" font-size="26" fill="#1F4E79" text-anchor="end" font-weight="bold">DIGITALOCEAN (région SFO2)</text>
+<text x="1496" y="252" font-size="26" fill="#1F4E79" text-anchor="start" font-weight="bold">| VPC default-sfo2 10.120.0.0/20</text>
+<rect x="1285" y="50" width="370" height="92" rx="14" fill="#F2F2F2" stroke="#A5A5A5" stroke-width="3"/>
+<text x="1470" y="90" font-size="26" fill="#262626" text-anchor="middle" font-weight="bold">Internet</text>
+<text x="1470" y="124" font-size="20" fill="#262626" text-anchor="middle">clients / visiteurs</text>
+<rect x="940" y="405" width="460" height="520" rx="14" fill="#E2F0D9" stroke="#548235" stroke-width="3" stroke-dasharray="12 8"/>
+<rect x="1540" y="405" width="440" height="520" rx="14" fill="#FFF2CC" stroke="#BF8F00" stroke-width="3" stroke-dasharray="12 8"/>
+<rect x="1225" y="383" width="155" height="44" rx="8" fill="#548235"/>
+<text x="1302.5" y="412.0" font-size="19" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Vague 1</text>
+<rect x="1805" y="383" width="155" height="44" rx="8" fill="#BF8F00"/>
+<text x="1882.5" y="412.0" font-size="19" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Vague 2</text>
+<text x="1130.0" y="458" font-size="22" fill="#548235" text-anchor="middle" font-weight="bold">Exposée (IP publique)</text>
+<text x="1720.0" y="458" font-size="22" fill="#BF8F00" text-anchor="middle" font-weight="bold">Privée (VPC uniquement)</text>
+<rect x="962" y="492" width="416" height="408" rx="14" fill="#FFFFFF" stroke="#548235" stroke-width="3"/>
+<text x="1170.0" y="538" font-size="24" fill="#262626" text-anchor="middle" font-weight="bold">Edge-VM</text>
+<text x="1170.0" y="574" font-size="18" fill="#262626" text-anchor="middle">Ubuntu 24.04, 1 Go / 25 Go</text>
+<text x="1170.0" y="622" font-size="18" fill="#262626" text-anchor="middle">Nginx : reverse proxy HTTPS</text>
+<text x="1170.0" y="648" font-size="16" fill="#404040" text-anchor="middle">(80 redirige vers 443, certificat autosigné)</text>
+<text x="1170.0" y="696" font-size="18" fill="#262626" text-anchor="middle">serveur WireGuard 51820/udp</text>
+<text x="1170.0" y="744" font-size="18" fill="#2E75B6" text-anchor="middle" font-weight="bold">VPC 10.120.0.2, wg 10.8.0.1</text>
+<text x="1170.0" y="860" font-size="19" fill="#548235" text-anchor="middle" font-weight="bold">seule VM avec IP publique</text>
+<rect x="1562" y="492" width="396" height="408" rx="14" fill="#FFFFFF" stroke="#BF8F00" stroke-width="3"/>
+<text x="1760.0" y="538" font-size="24" fill="#262626" text-anchor="middle" font-weight="bold">web-app</text>
+<text x="1760.0" y="574" font-size="18" fill="#262626" text-anchor="middle">Ubuntu 24.04, 512 Mo / 10 Go</text>
+<text x="1760.0" y="622" font-size="18" fill="#262626" text-anchor="middle">application web Python</text>
+<text x="1760.0" y="648" font-size="18" fill="#262626" text-anchor="middle">(service myapp)</text>
+<text x="1760.0" y="744" font-size="18" fill="#2E75B6" text-anchor="middle" font-weight="bold">VPC 10.120.0.3, wg 10.8.0.3</text>
+<text x="1760.0" y="786" font-size="18" fill="#262626" text-anchor="middle">Private-only : pas d'IP publique</text>
+<text x="1760.0" y="812" font-size="18" fill="#262626" text-anchor="middle">pas de NAT Gateway</text>
+<text x="1760.0" y="860" font-size="19" fill="#BF8F00" text-anchor="middle" font-weight="bold">administration via Edge-VM</text>
+<polyline points="1470.0,144.0 1470.0,560.0 1397.0,560.0" fill="none" stroke="#548235" stroke-width="3.5" stroke-linejoin="round"/>
+<polygon points="1379.0,560.0 1397.0,552.0 1397.0,568.0" fill="#548235"/>
+<text x="1484" y="330" font-size="20" fill="#548235" text-anchor="start" font-weight="bold">443 HTTPS</text>
+<polyline points="1379.0,760.0 1543.0,760.0" fill="none" stroke="#BF8F00" stroke-width="3.5" stroke-linejoin="round"/>
+<polygon points="1561.0,760.0 1543.0,768.0 1543.0,752.0" fill="#BF8F00"/>
+<text x="1470" y="682" font-size="15" fill="#BF8F00" text-anchor="middle" font-weight="bold">reverse proxy</text>
+<text x="1470" y="703" font-size="15" fill="#BF8F00" text-anchor="middle" font-weight="bold">:5000</text>
+<text x="1470" y="724" font-size="15" fill="#BF8F00" text-anchor="middle" font-weight="bold">(réseau VPC)</text>
+<line x1="745.6" y1="417.6" x2="951.4" y2="794.4" stroke="#BDD7EE" stroke-width="10" stroke-linecap="butt"/>
+<polyline points="746.5,419.3 950.5,792.7" fill="none" stroke="#2E75B6" stroke-width="4.5" stroke-linejoin="round"/>
+<polygon points="961.0,812.0 941.7,797.5 959.2,787.9" fill="#2E75B6"/>
+<polygon points="736.0,400.0 755.3,414.5 737.8,424.1" fill="#2E75B6"/>
+<text x="852.5" y="262" font-size="18" fill="#2E75B6" text-anchor="middle" font-weight="bold">Tunnel</text>
+<text x="852.5" y="286" font-size="17" fill="#2E75B6" text-anchor="middle" font-weight="bold">WireGuard</text>
+<text x="852.5" y="310" font-size="17" fill="#2E75B6" text-anchor="middle">(chiffré)</text>
+<text x="852.5" y="334" font-size="17" fill="#2E75B6" text-anchor="middle">10.8.0.0/24</text>
+<text x="852.5" y="358" font-size="17" fill="#2E75B6" text-anchor="middle">UDP 51820</text>
+<polyline points="1760.0,901.0 1760.0,1032.0 244.0,1032.0 244.0,911.0" fill="none" stroke="#C00000" stroke-width="3.5" stroke-dasharray="12 8" stroke-linejoin="round"/>
+<polygon points="244.0,893.0 252.0,911.0 236.0,911.0" fill="#C00000"/>
+<text x="1002.0" y="1010" font-size="20" fill="#C00000" text-anchor="middle" font-weight="bold">web-app vers SRV-DATA : PostgreSQL 5432 uniquement, via le tunnel WireGuard (prévu)</text>
+<rect x="50" y="1088" width="1953" height="170" rx="18" fill="#F5F5F5" stroke="#8C8C8C" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+<text x="1026.5" y="1134" font-size="23" fill="#262626" text-anchor="middle" font-weight="bold">SOLUTION LOCALE DE SECOURS (si DigitalOcean est indisponible)</text>
+<text x="1026.5" y="1180" font-size="20" fill="#404040" text-anchor="middle">Edge-VM et web-app sont recréées dans VMware sur deux réseaux isolés, derrière une 2e instance OPNsense jouant le rôle du fournisseur cloud.</text>
+<text x="1026.5" y="1216" font-size="20" fill="#404040" text-anchor="middle">Même plan d'adressage, même tunnel WireGuard, mêmes règles et mêmes tests.</text>
+</svg>

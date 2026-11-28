@@ -5,3 +5,4 @@
 *.iso
 *.ova
 .env
+.DS_Store
